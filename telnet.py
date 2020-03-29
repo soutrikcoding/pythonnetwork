@@ -4,9 +4,15 @@ import os
 import subprocess
 
 new_socket = socket.socket()
-host = '8.8.8.8'
-port = 59
+host = '192.168.0.11'
+port = 81
 
-s = new_socket.connect((host, port))
-
-print(s)
+try :
+	s = new_socket.connect((host, port))
+except InterruptedError :
+	print("Connection Interrupted")
+except TimeoutError :
+	print("Connection Timed out")
+finally :
+	if new_socket.timeout :
+		print("Connection Failure")
