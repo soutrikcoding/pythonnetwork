@@ -9,6 +9,7 @@ port = 81
 
 try :
 	s = new_socket.connect((host, port))
+	print("Connection Successful")
 except InterruptedError :
 	print("Connection Interrupted")
 except TimeoutError :
