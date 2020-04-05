@@ -1,20 +1,20 @@
 # This program checks if a port is open in a specific host
 # Author : Soutrik Chatterjee
 
-
-import telnetlib
+import time
 import socket
-import os
-import subprocess
 
 new_socket = socket.socket()
 
 host = input("Enter IP address of the machine ")
 port = int(input("Enter the port to check "))
 
+start = time.perf_counter()
+
 try :
 	s = new_socket.connect((host, port))
 	print("Connection Successful")
+	print("Time taken to establish the connection = ", time.perf_counter() - start , "seconds")
 except InterruptedError :
 	print("Connection Interrupted")
 except TimeoutError :
@@ -24,5 +24,6 @@ except ConnectionRefusedError :
 finally :
 	if new_socket.timeout :
 		print("Connection Failure")
+
 
 w = input("Press enter to exit") 
